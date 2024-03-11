@@ -1,0 +1,1 @@
+Dockerized Python application. CI/CD with Jenkins
