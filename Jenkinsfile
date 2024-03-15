@@ -13,7 +13,7 @@ pipeline {
                 echo 'Testing..'
                 script {
                     // Install pytest using absolute path to pip
-                    sh '~/.local/bin/pip install pytest'
+                    sh '/var/lib/jenkins/.local/bin/pip install pytest'
                     // Run pytest
                     sh 'pytest'
                 }
