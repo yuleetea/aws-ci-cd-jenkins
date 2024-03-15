@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    // you can run docker container that already has pytest installed
+    agent {
+        docker {
+            image 'python:3.8' // Choose an image with pytest installed
+            args '-u root' // Run container as root to install packages
+        }
+    }
 
     stages {
         stage('Init') {
@@ -11,12 +17,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                script {
-                    // Install pytest using absolute path to pip
-                    sh 'yum install -y pytest'
-                    // Run pytest
-                    sh 'pytest'
-                }
+                sh 'pip install pytest'
+                sh 'pytest'
             }
         }
         stage('SCM Checkout') {
