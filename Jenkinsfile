@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                pytest
+                sh pytest
             }
         }
         stage('SCM Checkout') {
