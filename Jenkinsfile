@@ -15,6 +15,8 @@ pipeline {
                     // Create and activate a virtual environment
                     sh 'python3 -m venv venv'
                     sh 'source venv/bin/activate'
+                    // Update PATH to include directory containing pip
+                    env.PATH = "~/.local/bin/pip:${env.PATH}"
                     // Install pytest
                     sh 'pip install pytest'
                     // Run pytest
