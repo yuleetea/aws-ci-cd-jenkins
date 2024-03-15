@@ -13,7 +13,7 @@ pipeline {
                 echo 'Testing..'
                 script {
                     // Install pytest using absolute path to pip
-                    sh 'sudo yum install pytest'
+                    sh 'yum install -y pytest'
                     // Run pytest
                     sh 'pytest'
                 }
