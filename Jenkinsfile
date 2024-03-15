@@ -12,13 +12,8 @@ pipeline {
             steps {
                 echo 'Testing..'
                 script {
-                    // Create and activate a virtual environment
-                    sh 'python3 -m venv venv'
-                    sh 'source venv/bin/activate'
-                    // Update PATH to include directory containing pip
-                    env.PATH = "~/.local/bin/pip:${env.PATH}"
-                    // Install pytest
-                    sh 'pip install pytest'
+                    // Install pytest using absolute path to pip
+                    sh '~/.local/bin/pip install pytest'
                     // Run pytest
                     sh 'pytest'
                 }
