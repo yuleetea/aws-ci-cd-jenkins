@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Init') {
+            steps {
+                echo 'Initializing..'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                pytest
+            }
+        }
+        stage('SCM Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '4ba07c5d-7760-4491-90eb-fbcc242a6743', url: 'https://github.com/yuleetea/aws-ci-cd-jenkins.git']])
+            }
+        }
+
+    }
+}
