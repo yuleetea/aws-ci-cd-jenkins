@@ -30,7 +30,7 @@ pipeline {
                 sh 'mkdir -p /etc/runlevels/default/'
                 sh 'ln -s /etc/init.d/docker /etc/runlevels/default/docker'
                 sh 'dockerd &'
-                sh 'usermod -aG docker jenkins'
+                // sh 'usermod -aG docker jenkins'
                 // sh 'apt update'
                 // sh 'apt install yum'
                 // sh 'yum update'
