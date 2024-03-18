@@ -25,7 +25,7 @@ pipeline {
         stage('Build and Push Image') {
             steps {
                 echo 'Building docker image and pushing to repository..'
-                sh 'yum install jenkins -y'
+                sh 'curl -fsSL https://get.docker.com | sh'
                 sh 'docker build -t python-flask:latest --load .'
                 sh 'docker push yuleetea/python-flask:latest'
             }
