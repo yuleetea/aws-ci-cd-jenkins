@@ -26,10 +26,9 @@ pipeline {
             steps {
                 echo 'Building docker image and pushing to repository..'
                 sh 'apk update'
-                sh 'apk add curl'
-                sh 'curl -fsSL https://get.docker.com | sh'
-                sh 'service docker start'
-                sh 'usermod -aG docker jenkins'
+                sh 'apk add docker'
+                sh 'rc-update add docker boot'
+                sh 'rc-service docker start'
                 // sh 'apt update'
                 // sh 'apt install yum'
                 // sh 'yum update'
