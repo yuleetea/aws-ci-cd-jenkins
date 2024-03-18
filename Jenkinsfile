@@ -25,12 +25,16 @@ pipeline {
         stage('Build and Push Image') {
             steps {
                 echo 'Building docker image and pushing to repository..'
-                sh 'apt update'
-                sh 'apt install yum'
-                sh 'yum update'
-                sh 'yum install -y docker'
+                sh 'apk update'
+                sh 'apk add curl'
+                sh 'curl -fsSL https://get.docker.com | sh'
                 sh 'service docker start'
-                sh 'sudo usermod -a -G docker ec2-user'
+                sh 'usermod -aG docker jenkins'
+                // sh 'apt update'
+                // sh 'apt install yum'
+                // sh 'yum update'
+                // sh 'yum install -y docker'
+                // sh 'sudo usermod -a -G docker ec2-user'
                 sh 'docker build -t python-flask:latest --load .'
                 sh 'docker push yuleetea/python-flask:latest'
             }
