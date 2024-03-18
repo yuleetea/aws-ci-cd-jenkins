@@ -25,6 +25,8 @@ pipeline {
         stage('Build and Push Image') {
             steps {
                 echo 'Building docker image and pushing to repository..'
+                sh 'apt update'
+                sh 'apt install yum'
                 sh 'yum update'
                 sh 'yum install -y docker'
                 sh 'service docker start'
