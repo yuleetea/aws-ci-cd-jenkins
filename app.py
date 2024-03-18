@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Connect to your MySQL RDS database
 # Replace 'your_host', 'your_username', 'your_password', and 'your_database' with your actual credentials
 conn = mysql.connector.connect(
-    host='terraform-20240312203455523600000003.c7ai8gg087tc.us-east-1.rds.amazonaws.com',
+    host='terraform-20240315075336550500000001.c7ai8gg087tc.us-east-1.rds.amazonaws.com',
     port= 3306,
     user='admin',
     password='password',

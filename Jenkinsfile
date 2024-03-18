@@ -2,7 +2,7 @@ pipeline {
     // you can run docker container that already has pytest installed
     agent {
         docker {
-            image 'python:3.8' // Choose an image with pytest installed
+            image 'yuleetea/python-flask:latest' // take my image
             args '-u root' // Run container as root to install packages
         }
     }
@@ -17,8 +17,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'pip install pytest'
-                sh 'pip install -r requirements.txt'  // Install dependencies from requirements.txt
+                // sh 'pip install pytest'
+                // sh 'pip install -r requirements.txt'  // Install dependencies from requirements.txt
                 sh 'pytest'
             }
         }
