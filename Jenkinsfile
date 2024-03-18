@@ -27,7 +27,7 @@ pipeline {
                 echo 'Building docker image and pushing to repository..'
                 sh 'apk update'
                 sh 'apk add docker'
-                sh 'rc-update add docker boot'
+                sh 'update-rc.d docker defaults'
                 sh 'rc-service docker start'
                 // sh 'apt update'
                 // sh 'apt install yum'
