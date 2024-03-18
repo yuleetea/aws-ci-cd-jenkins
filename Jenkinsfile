@@ -27,7 +27,7 @@ pipeline {
                 echo 'Building docker image and pushing to repository..'
                 sh 'apk update'
                 sh 'apk add docker'
-                mkdir -p /etc/runlevels/default/
+                sh 'mkdir -p /etc/runlevels/default/'
                 sh 'ln -s /etc/init.d/docker /etc/runlevels/default/docker'
                 // sh 'apt update'
                 // sh 'apt install yum'
