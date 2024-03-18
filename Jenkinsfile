@@ -29,7 +29,10 @@ pipeline {
                 sh 'apk add docker'
                 sh 'mkdir -p /etc/runlevels/default/'
                 sh 'ln -s /etc/init.d/docker /etc/runlevels/default/docker'
-                sh 'dockerd &'
+                // Start Docker daemon and wait for it to initialize
+                sh 'dockerd > /var/log/docker.log 2>&1 &'
+                sh 'until docker info > /dev/null 2>&1; do echo "Waiting for Docker to start..."; sleep 5; done'
+
                 // sh 'usermod -aG docker jenkins'
                 // sh 'apt update'
                 // sh 'apt install yum'
