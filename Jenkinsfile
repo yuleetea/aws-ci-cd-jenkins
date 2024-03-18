@@ -22,6 +22,13 @@ pipeline {
                 sh 'pytest'
             }
         }
+        stage('Build and Push Image') {
+            steps {
+                echo 'Building docker image and pushing to repository..'
+                sh 'docker build -t python-flask:latest --load .'
+                sh 'docker push yuleetea/python-flask:latest'
+            }
+        }
         stage('SCM Checkout') {
             steps {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '4ba07c5d-7760-4491-90eb-fbcc242a6743', url: 'https://github.com/yuleetea/aws-ci-cd-jenkins.git']])
